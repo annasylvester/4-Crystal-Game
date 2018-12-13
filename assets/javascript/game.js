@@ -53,14 +53,17 @@ function winLose() {
   if (guessedTotal == randomNum) {
     alert("You win!");
     winCounter ++;
+    console.log(winCounter, lossCounter);
+    reset();
   }
 
-  if (guessedTotal > randomNum) {
+  else if (guessedTotal > randomNum) {
     alert("You lost!");
     lossCounter --;
-
+    console.log(winCounter, lossCounter);
+    reset();
   }
-  console.log(winCounter, lossCounter);
+
 };
 
 // WHEN BUTTONS ARE CLICKED
