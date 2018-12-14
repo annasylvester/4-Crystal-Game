@@ -16,7 +16,11 @@ let addedTotal = [];
 let winCounter = 0;
 let lossCounter = 0;
 
+
 function reset() {
+
+    guessedTotal= [0];
+    document.getElementById("guessedAdd").innerHTML = guessedTotal;
 
     //random number at top
     randomNum = Math.floor(Math.random() * 120) + 19;
@@ -41,6 +45,7 @@ function doMath() {
   let value2 = parseInt(guessedTotal.shift());
   let result = plus(value1, value2);
   guessedTotal.push(result);
+  document.getElementById("guessedAdd").innerHTML = guessedTotal;
   winLose();
   console.log(guessedTotal);
 };
@@ -54,13 +59,15 @@ function winLose() {
     alert("You win!");
     winCounter ++;
     console.log(winCounter, lossCounter);
+    document.getElementById("wins").innerHTML = winCounter;
     reset();
   }
 
   else if (guessedTotal > randomNum) {
     alert("You lost!");
-    lossCounter --;
+    lossCounter ++;
     console.log(winCounter, lossCounter);
+    document.getElementById("loss").innerHTML = lossCounter;
     reset();
   }
 
@@ -73,7 +80,7 @@ $("#crystal1").on("click", function () {
     console.log(guessedTotal);
     if (guessedTotal.length > 1) {
       doMath();
-    };
+    }
   });
   $("#crystal2").on("click", function () {
     guessedTotal.push(crystalVal[1]);
